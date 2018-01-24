@@ -61,7 +61,7 @@
 
 
 
-  function playAudio (e) {
+  function keyPress (e) {
     console.log('event');
     console.log(e);
 
@@ -86,7 +86,30 @@
 
   const elKeys = Array.from(document.querySelectorAll('.key'));
   elKeys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playAudio);
+  window.addEventListener('keydown', keyPress);
+
+
+  // const click = ({target}) => target.classList.add('playing');
+
+  // This code only plays the first div with the key class, will not work for subsequent
+  // document.querySelector('.key').onclick = function() {
+  //   this.classList.add('playing');
+  //   console.log("clicked!!!")
+  // }
+
+  // This code adds an eventListener for a click using the array created earlier
+  elKeys.forEach(key => key.addEventListener('click', playAudio));
+
+
+  // To Do: pull the data key from the div selected and do function similar to one above. Rethink of better way to restructure.
+  function playAudio (e) {
+    // Pulls data-key element. Needs updating
+    const keyData = e.toElement.parentElement.attributes[0];
+    // console.log(keyData);
+    // const keyDiv = document.querySelector(`div["${keyData}"]`);
+    // console.log(keyDiv);
+  }
+
 
 
 </script>
