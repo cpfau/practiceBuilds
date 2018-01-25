@@ -104,8 +104,9 @@
   // To Do: pull the data key from the div selected and do function similar to one above. Rethink of better way to restructure.
   function playAudio (e) {
     // Pulls data-key element. Needs updating
-    const keyData = e.toElement.parentElement.attributes[0];
-    // console.log(keyData);
+    const keyData = e.target.parentNode;
+    // const keyData = e.toElement.parentElement.attributes[0];
+    console.log(keyData);
     // const keyDiv = document.querySelector(`div["${keyData}"]`);
     // console.log(keyDiv);
   }
