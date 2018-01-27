@@ -24,6 +24,7 @@
     .panels {
       min-height:100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -41,6 +42,10 @@
       font-size: 20px;
       background-size:cover;
       background-position:center;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      flex-direction: column;
     }
 
 
@@ -54,7 +59,16 @@
       margin:0;
       width: 100%;
       transition:transform 0.5s;
+      flex: 1 0 auto;
+      display:flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel.open-active > *:first-child { transform: translateY(0); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
 
     .panel p {
       text-transform: uppercase;
@@ -68,6 +82,7 @@
 
     .panel.open {
       font-size:40px;
+      flex: 5;
     }
 
   </style>
@@ -103,6 +118,22 @@
 
   <script>
 
+  const elPanel = document.querySelectorAll('.panel');
+
+  function toggleOpen(e) {
+    console.log("test");
+    this.classList.toggle('open');
+    console.log(`event on click: ${e.propertyName}`)
+    console.log(this);
+  };
+
+  function toggleActive(e) {
+    console.log("transition end");
+    console.log(e.propertyName);
+  };
+
+  elPanel.forEach(elPanel => elPanel.addEventListener('click', toggleOpen));
+  elPanel.forEach(elPanel => elPanel.addEventListener('transitionend', toggleActive));
   </script>
 
 
