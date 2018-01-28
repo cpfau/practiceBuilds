@@ -123,13 +123,14 @@
   function toggleOpen(e) {
     console.log("test");
     this.classList.toggle('open');
-    console.log(`event on click: ${e.propertyName}`)
-    console.log(this);
+    console.log(`event on click: ${e}`)
+    console.log(`"this" on click: ${this}`);
   };
 
   function toggleActive(e) {
     console.log("transition end");
-    console.log(e.propertyName);
+    console.log(` toggle active property name: ${e.propertyName}`);
+    console.log(`"this" on toggleActive: ${this}`);
   };
 
   elPanel.forEach(elPanel => elPanel.addEventListener('click', toggleOpen));
